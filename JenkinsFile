@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('Build') {
             steps {
-                sh chmode +x gradlew
+                sh 'chmode +x gradlew'
                 sh './gradlew clean build'
             }
         }
