@@ -8,18 +8,15 @@ pipeline {
                 sh './gradlew clean build'
             }
         }
+        stage ('Test') {
+            steps{
+                sh './gradlew check'
+            }
+        }
     }
     post {
         always {
-            script {
-                allure([
-                    includeProperties: false,
-                    jdk: '',
-                    properties: [],
-                    reportBuildPolicy: 'ALWAYS',
-                    results: [[path: 'target/allure-results']]
-                ])
-            }
+          junit(testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true)
         }
     }
 
