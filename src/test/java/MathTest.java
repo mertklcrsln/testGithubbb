@@ -12,7 +12,7 @@ public class MathTest {
         int result= math.add(a,b);
         assertEquals(result,expected);
     }
-
+    @Test
     public void addTests(){
         int a=5;
         int b=4;
